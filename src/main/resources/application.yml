@@ -1,0 +1,35 @@
+#
+#
+#server:
+#  port: 8761
+#eureka:
+#  client:
+#    register-with-eureka: false
+#    fetch-registry: false
+#    eureka-server-u-r-l-context:  http://127.0.0.1:8761/eureka
+#
+spring:
+  application:
+    name: microservice-discovery-eureka-haha
+---
+spring:
+  # 制定 profile 为 peer1
+  profiles : peer1
+server:
+  port: 8761
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    eureka-server-u-r-l-context:  http://peer2:8762/eureka
+---
+spring:
+  # 制定 profile 为 peer2
+  profiles : peer2
+server:
+  port: 8762
+eureka:
+  instance:
+    hostname: peer2
+  client:
+    eureka-server-u-r-l-context:  http://peer1:8761/eureka

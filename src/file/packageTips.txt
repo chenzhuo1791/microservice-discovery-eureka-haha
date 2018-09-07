@@ -1,0 +1,19 @@
+springBoot项目打包常用两种方式：
+方式一 ：命令行打包
+    1 	进入项目目录  eg : E:\Eclipse\SVN\KM-Assist\V1.0\kmassist-V1.0
+    2   打开后台docs页面，输入打包命令： eg : mvn clean package -Dmaven.test.skip=true
+    3   打包好的jar包在当前目录的target目录下 eg : E:\Eclipse\SVN\KM-Assist\V1.0\kmassist-V1.0\target
+    4   将jar包上传到服务器上
+    5   发布项目 ： java -jar kmassist.jar >assist.log &
+    PS :
+        pom.xml中需要
+
+方式二 ：借助IDE打包
+    最常用的就是Idea
+        1   project structure -- > artifacts -->
+        2   + --> jar --> from modules with dependencies
+        3   选择 MainClass --> copy... --> OK , 会生成 MANIFEST.MF
+        4   打开 Maven Project 菜单栏 ,选择modular
+        5   clean , install ---> 会生成 target-->  **.jar
+        6   将jar包上传到服务器上
+        7   发布项目 ：eg java -jar kmassist.jar >assist.log &
